@@ -5,7 +5,7 @@ import BookType from "./BookType";
 class Search extends Component {
   render() {
     return (
-      <div>
+      <form>
         <section>
           <label htmlFor='search'>Search:</label>
           <input type='text' value='Henry' />
@@ -15,7 +15,7 @@ class Search extends Component {
           <PrintType />
           <BookType />
         </section>
-      </div>
+      </form>
     );
   }
 }
