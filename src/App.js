@@ -4,11 +4,17 @@ import HeadTitle from "./headsection/HeadTitle";
 import ResultsList from "./ResultsList/ResultsList";
 
 class App extends Component {
-  state = {
-      query: "game of thrones", filter: "ebooks", printType: "all",
-  };
+  constructor(props){
+    super(props)
+    this.state = {
+      query: "",
+      filter: "ebooks",
+      printType: "all",
+      jsonObject: {}
+    }
+  }
 
-  componentDidMount() {
+  componentDidUpdate() {
     fetch(
       `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
         this.state.query
@@ -20,16 +26,22 @@ class App extends Component {
     )
       .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
+        const transferThis = responseJson
+        this.setState({jsonObject: transferThis})
+        console.log(responseJson)
       });
+  }
+
+  componentWillUnmount(){
+    
   }
 
   handleSearchQuery = event => {
     event.preventDefault();
     this.setState({
-      search: [{query: event.target.value}],
+      query: event.target.value
     });
-    console.log(this.state.query);
+    
   };
 
   handleFilter = () => {};
@@ -37,12 +49,13 @@ class App extends Component {
   handlePrintType = () => {};
 
   render() {
+    const searchValue = this.state.query
     return (
       <div className='App'>
-        <HeadTitle 
-          userQuery={event => this.handleSearchQuery(event)} 
-          serchValue={this.state.query} 
-          />
+        <HeadTitle
+          userQuery={event => this.handleSearchQuery(event)}
+          serchValue={searchValue}
+        />
         <ResultsList />
       </div>
     );
