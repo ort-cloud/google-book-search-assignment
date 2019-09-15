@@ -1,19 +1,16 @@
-import React, { Component } from 'react'
+import React from "react";
 
-class PrintType extends Component {
-  render() {
-    return (
-      <>
-        <label htmlFor="print-drop-down">Print Type:</label>
-        <select id="print-drop-down">
-          <option value="This test1">Test1</option>
-          <option value="This test2">Test2</option>
-          <option value="This test3">Test3</option>
-          <option value="This test4">Test4</option>
-        </select>
-      </>
-    )
-  }
-}
+const PrintType = props => {
+  return (
+    <>
+      <label htmlFor='print-drop-down'>Print Type:</label>
+      <select id='print-drop-down'>
+        <option value='all'>All</option>
+        <option value='books'>Books</option>
+        <option value='title'>Title</option>
+      </select>
+    </>
+  );
+};
 
 export default PrintType;
