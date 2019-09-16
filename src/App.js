@@ -12,9 +12,11 @@ class App extends Component {
       printType: "all",
       jsonObject: {},
     };
+    this.handleSearchQuery = this.handleSearchQuery.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate(prevprops, prevState) {
     fetch(
       `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
         this.state.query
@@ -26,8 +28,10 @@ class App extends Component {
     )
       .then(response => response.json())
       .then(responseJson => {
-        /* const transferThis = responseJson
-        this.setState({jsonObject: transferThis}) */
+        const transferThis = responseJson;
+        if (this.state.jsonObject.kind !== prevState.jsonObject.kind) {
+          this.setState({ jsonObject: transferThis });
+        }
         console.log(responseJson);
       });
   }
@@ -39,6 +43,11 @@ class App extends Component {
     });
   };
 
+  handleSubmit(event) {
+    event.preventDefault()
+    (this.state.value)
+  }
+
   handleFilter = () => {};
 
   handlePrintType = () => {};
@@ -49,6 +58,7 @@ class App extends Component {
       <div className='App'>
         <HeadTitle
           userQuery={event => this.handleSearchQuery(event)}
+          userSubmit={event => this.handleSubmit(event)}
           serchValue={searchValue}
         />
         <ResultsList />

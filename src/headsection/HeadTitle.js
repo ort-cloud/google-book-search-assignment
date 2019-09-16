@@ -8,7 +8,8 @@ class HeadTitle extends Component {
         <h1>Google Book Search</h1>
         <Search 
           userQuery={this.props.userQuery}
-          /* searchValue={searchValue} */ 
+          userSubmit={this.props.userSubmit}
+          searchValue={this.props.searchValue} 
         />
       </div>
     );

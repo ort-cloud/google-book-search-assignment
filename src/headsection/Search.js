@@ -5,7 +5,7 @@ import BookType from "./BookType";
 class Search extends Component {
   render() {
     return (
-      <form>
+      <form onSubmit={this.props.userQuery} >
         <section>
           <label htmlFor='search'>Search:</label>
           <input
