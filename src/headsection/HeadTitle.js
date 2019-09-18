@@ -1,19 +1,24 @@
-import React, { Component } from 'react'
+import React, {Component} from "react";
 import Search from "./Search";
 
 class HeadTitle extends Component {
-  render () {
+  render() {
     return (
       <div>
-        <h1>Google Book Search</h1>
-        <Search 
-          userQuery={this.props.userQuery}
-          userSubmit={this.props.userSubmit}
-          searchValue={this.props.searchValue} 
-        />
+        <h1
+          style={{
+            backgroundColor: "black",
+            color: "white",
+            textAlign: "center",
+            margin: "0 0 0 0",
+          }}
+        >
+          Google Book Search
+        </h1>
+        <Search {...this.props} />
       </div>
     );
   }
-};
+}
 
 export default HeadTitle;
