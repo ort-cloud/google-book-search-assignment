@@ -3,17 +3,23 @@ import ResultsDescription from "./ResultsDescription";
 import ResultsImage from "./ResultsImage";
 
 const ResultsList = props => {
-  console.log(props);
+  /* console.log(); */
   if (!props.resultsAPI.items) {
     return null;
   }
+
   return (
     <div>
-      {props.resultsAPI.items.map(item => {
+      {props.resultsAPI.items.map(items => {
         return (
           <React.Fragment>
-            <ResultsImage image={item.volumeInfo.imageLinks.thumbnail} />
-            <ResultsDescription descritption={item.volumeInfo.descritption} />
+            <ResultsImage image={items.volumeInfo.imageLinks.thumbnail} />
+            <ResultsDescription
+              title={items.volumeInfo.title}
+              author={items.volumeInfo.authors}
+              price={items.saleInfo.amount}
+              descritption={items.volumeInfo.descritption}
+            />
           </React.Fragment>
         );
       })}
