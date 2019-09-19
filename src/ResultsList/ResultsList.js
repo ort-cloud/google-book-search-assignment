@@ -3,7 +3,6 @@ import ResultsDescription from "./ResultsDescription";
 import ResultsImage from "./ResultsImage";
 
 const ResultsList = props => {
-  /* console.log(); */
   if (!props.resultsAPI.items) {
     return null;
   }
@@ -17,8 +16,8 @@ const ResultsList = props => {
             <ResultsDescription
               title={items.volumeInfo.title}
               author={items.volumeInfo.authors}
-              price={items.saleInfo.amount}
-              descritption={items.volumeInfo.descritption}
+              /* price={items.saleInfo.retailPrice.amount} */
+              description={items.volumeInfo.description}
             />
           </React.Fragment>
         );

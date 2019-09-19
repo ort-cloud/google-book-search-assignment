@@ -1,7 +1,6 @@
 import React from "react";
 
 const ResultsDescription = props => {
-  //console.log(props.authors);
   return (
     <React.Fragment>
       <section>
