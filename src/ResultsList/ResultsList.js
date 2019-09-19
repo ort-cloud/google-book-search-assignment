@@ -9,16 +9,32 @@ const ResultsList = props => {
 
   return (
     <div>
-      {props.resultsAPI.items.map(items => {
+      {props.resultsAPI.items.map((items, index) => {
+        if (items.saleInfo.saleability === "NOT_FOR_SALE") {
+          return null;
+        }
+
+        /* if (items.saleInfo.retailPrice.amount === 0) {
+          return "Free Ebook";
+        } else {
+          return items.saleInfo.retailPrice;
+        } */
+
         return (
-          <React.Fragment>
+          <React.Fragment key={index}>
             <ResultsImage image={items.volumeInfo.imageLinks.thumbnail} />
             <ResultsDescription
               title={items.volumeInfo.title}
               author={items.volumeInfo.authors}
-              /* price={items.saleInfo.retailPrice.amount} */
+              /* price={} */
               description={items.volumeInfo.description}
-            />
+            >{() => {
+              if (items.saleInfo.retailPrice.amount === 0) {
+                return "Free Ebook";
+              } else {
+                return items.saleInfo.retailPrice;
+              }}
+            }</ResultsDescription>
           </React.Fragment>
         );
       })}
@@ -27,3 +43,5 @@ const ResultsList = props => {
 };
 
 export default ResultsList;
+
+/* price={items.saleInfo.retailPrice.amount} */

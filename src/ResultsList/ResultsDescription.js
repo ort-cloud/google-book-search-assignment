@@ -6,7 +6,7 @@ const ResultsDescription = props => {
       <section>
         <h2>{props.title}</h2>
         <p>Author: {props.author}</p>
-        <p>Price: {props.price}</p>
+        <p>Price: {props.children}</p>
         <p>Description: {props.description}</p>
       </section>
     </React.Fragment>
